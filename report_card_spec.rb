@@ -15,7 +15,7 @@ RSpec.describe ReportCard do
   describe '#generate' do
     context 'when the student is failing' do
       it 'logs a message' do
-        student = double('student', grades: [40, 40, 50, 40])
+        student = double('student', :grades => [30, 40, 50, 40])
         expect(Logger).to receive(:log_report_card).with(student)
         report_card = ReportCard.new(student)
 
@@ -25,7 +25,7 @@ RSpec.describe ReportCard do
 
     context 'when the student is passing' do
       it 'does not log a message' do
-        student = double('student', grades: [80, 70, 80, 90])
+        student = double('student', :grades => [80, 70, 80, 90])
         expect(Logger).to_not receive(:log_report_card)
         report_card = ReportCard.new(student)
 
